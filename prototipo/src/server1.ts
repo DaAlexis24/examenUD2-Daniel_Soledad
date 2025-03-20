@@ -1,7 +1,7 @@
 import express from 'express'; // importamos el framework
 import type { Request, Response } from 'express'; //Importamos los tipos req y res que nos ayudarán a construir las funciones que configuraran nuestros endpoints
 import { v4 as uuidv4 } from 'uuid'; // Esto nos ayudará a crear ids en formato uuid a la hora de crear nuevos datos
-import { mockProducts } from './mock'; // Importamos nuestros datos iniciales
+import { mockProducts } from './mock.js'; // Importamos nuestros datos iniciales
 import createDebug from 'debug'; // Esto nos ayudará a enseñar mensajes personalizados en nuestra consola
 
 const app = express(); // Creamos la instancia de Express
@@ -27,8 +27,8 @@ app.get('/products/:id', (req: Request, res: Response) => {
 
     //Si no existe el producto realizamos la siguiente validación:
     if (!product) {
-        debug(`No existe el registro con el ID: ${id}`);
-        res.status(404).json();
+        // debug(`No existe el registro con el ID: ${id}`);
+        res.status(404).json({ message: 'No existe el registro' });
         return;
         // AVISO: En cada condicional colocaré el return como una sentencia aparte para evitar una sobrecarga en los tipos de Request y Response
     }
