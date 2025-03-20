@@ -1,27 +1,10 @@
-export class Products {
-    constructor(
-        public id: string,
-        public name: string,
-        public price: number,
-        public stock: number,
-        public is_active: boolean,
-        public created_at: Date,
-        public update_at: Date
-    ) {
-        if (created_at && update_at > new Date()) {
-            throw new Error(
-                'La fecha es errónea, ya que la creación del registro no puede ser en el futuro'
-            );
-        }
-
-        if (update_at < created_at) {
-            throw new Error(
-                'La fecha de actualización del producto no puede ser antes de su fecha de creación'
-            );
-        }
-    }
+// Creo la entidad Productos para poder guardar los datos correspondientes que se utilizaran en este ejemplo, en este caso utilizare una interfaz para poder guardar algunos datos en memoria sin la necesidad de crear más de una variable para crear una nueva instancia de esta interfaz, cosa que las clases no me lo permiten
+export interface Products {
+    id: string;
+    name: string;
+    price: number;
+    stock: number;
+    is_active: boolean;
+    created_at: Date;
+    update_at: Date;
 }
-
-// let products: Products[] = [
-//     {}, {}
-// ];
